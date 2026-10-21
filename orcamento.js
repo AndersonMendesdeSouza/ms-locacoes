@@ -183,7 +183,12 @@ function createRequestPdf(selectedItems) {
 
   pdf.setProperties({
     title: 'Solicitação de orçamento | MS Locações & Eventos',
-    subject: 'Itens e quantidades para orçamento',
+    // Identifica os serviços sem depender da leitura visual ou dos nomes do PDF.
+    subject: `MSLOCACOES_REQUEST_V1:${btoa(JSON.stringify({
+      version: 1,
+      source: 'ms-locacoes-landing',
+      items: selectedItems.map(item => ({ serviceId: item.serviceId, quantity: item.quantity }))
+    }))}`,
     author: 'MS Locações & Eventos'
   });
 
@@ -313,7 +318,7 @@ pdfDialogConfirm.addEventListener('click', () => {
   const selectedItems = [];
   for (const { service, checkbox, quantity } of itemControls) {
     if (checkbox.checked) {
-      selectedItems.push({ name: service.name, quantity: Number(quantity.value) });
+      selectedItems.push({ serviceId: service.id, name: service.name, quantity: Number(quantity.value) });
     }
   }
 
