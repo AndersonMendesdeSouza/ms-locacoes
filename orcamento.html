@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#07131b">
+  <meta name="description" content="Monte uma seleção de equipamentos para seu evento e experimente o simulador de orçamento da MS Locações & Eventos com valores demonstrativos.">
+  <title>Simule seu orçamento | MS Locações & Eventos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="orcamento.css">
+  <script src="orcamento.js" defer></script>
+</head>
+
+<body class="budget-page" id="topo">
+  <a class="skip-link" href="#simulador">Ir para o simulador</a>
+  <header class="header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="MS Locações, início">
+        <span class="brand-mark">MS<span>.</span></span>
+        <span class="brand-caption">LOCAÇÕES <small>& EVENTOS</small></span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">☰</button>
+      <nav id="menu" class="menu" aria-label="Navegação principal">
+        <a href="index.html#servicos">Serviços</a>
+        <a href="index.html#sobre">A empresa</a>
+        <a href="index.html#galeria">Galeria</a>
+        <a href="index.html#contato">Contato</a>
+        <a href="orcamento.html" aria-current="page">Simule seu orçamento</a>
+      </nav>
+      <a class="btn btn-primary nav-cta" href="https://wa.me/556484188209?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Fale com a equipe <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="budget-intro">
+      <div class="wrap">
+        <a class="back-link" href="index.html"><span aria-hidden="true">←</span> Voltar ao site</a>
+        <div class="budget-heading">
+          <div>
+            <span class="kicker">DO SEU JEITO, DESDE O COMEÇO</span>
+            <h1>Seu evento.<br>Seu <span>orçamento.</span></h1>
+          </div>
+          <p>Escolha o que faz sentido para o seu evento, ajuste as quantidades e monte uma primeira ideia com a gente.</p>
+        </div>
+        <ol class="budget-steps" aria-label="Como simular">
+          <li><span>01</span> Escolha os itens</li>
+          <li><span>02</span> Confira a simulação</li>
+          <li><span>03</span> Converse com a equipe</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="budget-workspace wrap" id="simulador" aria-label="Simulador de orçamento">
+      <div class="demo-notice" id="demo-notice">
+        <span class="notice-icon" aria-hidden="true">i</span>
+        <p><strong>Uma simulação, com valores de exemplo.</strong> Os preços abaixo são fictícios e não representam a tabela da MS Locações. Solicite os valores reais à nossa equipe.</p>
+      </div>
+
+      <div class="budget-layout">
+        <div class="budget-catalog">
+          <div class="catalog-heading">
+            <div><span class="kicker">MONTE SUA ESTRUTURA</span><h2>O que seu evento precisa?</h2></div>
+            <span class="daily-note">Valores de exemplo por diária</span>
+          </div>
+          <noscript><p class="quantity-error">Ative o JavaScript para selecionar itens e calcular a simulação. Você também pode <a href="https://wa.me/556484188209" target="_blank" rel="noopener">falar com a equipe pelo WhatsApp</a>.</p></noscript>
+          <div id="service-groups"></div>
+        </div>
+
+        <aside class="budget-summary" aria-labelledby="summary-title">
+          <div class="summary-heading"><span class="kicker">CADA DETALHE CONTA</span><h2 id="summary-title">Seu resumo</h2></div>
+          <p id="selection-feedback" class="selection-feedback" role="status">Nenhum item selecionado</p>
+          <div class="summary-empty" id="summary-empty">
+            <span class="empty-symbol" aria-hidden="true">＋</span>
+            <p>Seu evento começa<br>com a primeira escolha.</p>
+            <small>Selecione os itens ao lado para montar sua simulação.</small>
+          </div>
+          <ul class="summary-items" id="summary-items" aria-label="Itens selecionados"></ul>
+          <p class="quantity-error" id="quantity-error" role="alert" hidden>Confira as quantidades: use números inteiros entre 1 e o limite indicado em cada item.</p>
+          <div class="summary-total">
+            <span>Total ilustrativo <small>para uma diária</small></span>
+            <strong id="budget-total" aria-live="polite" aria-atomic="true">R$ 0,00</strong>
+          </div>
+          <p class="summary-disclaimer">Valores fictícios, sem validade de orçamento. Preços, montagem, transporte e disponibilidade devem ser confirmados com a equipe.</p>
+          <button class="btn btn-primary whatsapp-button" id="whatsapp-button" type="button" disabled>Solicitar orçamento real <span aria-hidden="true">↗</span></button>
+          <p class="whatsapp-hint">Sua seleção vai junto na mensagem do WhatsApp.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="budget-help wrap" aria-labelledby="help-title">
+      <span class="help-mark" aria-hidden="true">MS<span>.</span></span>
+      <div><h2 id="help-title">Não sabe por onde começar?</h2><p>Conte sua ideia. A gente ajuda a escolher a estrutura para o seu evento.</p></div>
+      <a class="help-link" href="https://wa.me/556484188209?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20para%20escolher%20a%20estrutura%20do%20meu%20evento." target="_blank" rel="noopener">Vamos conversar <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="footer budget-footer">
+    <div class="wrap footer-bottom"><span>© <span id="year"></span> MS Locações & Eventos. Todos os direitos reservados.</span><a href="index.html">Conheça a MS Locações <span aria-hidden="true">↗</span></a></div>
+  </footer>
+
+  <template id="budget-item-template">
+    <article class="budget-item">
+      <label class="item-choice">
+        <img class="item-photo" src="" alt="" loading="lazy">
+        <span class="item-copy"><span class="item-name"></span><span class="item-description"></span></span>
+        <input class="item-checkbox" type="checkbox">
+      </label>
+      <div class="item-controls">
+        <span class="item-price"><strong></strong><small>exemplo / diária</small></span>
+        <div class="quantity-control">
+          <button class="quantity-minus" type="button" disabled><span aria-hidden="true">−</span></button>
+          <input class="quantity-input" type="number" min="1" step="1" value="1" inputmode="numeric" required disabled>
+          <button class="quantity-plus" type="button" disabled><span aria-hidden="true">+</span></button>
+        </div>
+      </div>
+    </article>
+  </template>
+</body>
+
+</html>

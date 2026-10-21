@@ -23,7 +23,7 @@
             EVENTOS</small></span></a><button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false"
         aria-controls="menu">☰</button>
       <nav id="menu" class="menu" aria-label="Navegação principal"><a href="#servicos">Serviços</a><a href="#sobre">A
-          empresa</a><a href="#galeria">Galeria</a><a href="#contato">Contato</a></nav><a
+          empresa</a><a href="#galeria">Galeria</a><a href="#contato">Contato</a><a href="orcamento.html">Simule seu orçamento</a></nav><a
         class="btn btn-primary nav-cta"
         href="https://wa.me/556484188209?text=Ol%C3%A1%21%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento."
         target="_blank" rel="noopener">Solicitar orçamento <span>↗</span></a>
@@ -268,6 +268,13 @@
         aria-label="Falar com Anderson Mendes pelo WhatsApp">WhatsApp ↗</a>
     </div>
   </footer>
+  <a class="budget-float" href="orcamento.html" aria-label="Simule seu orçamento com a MS Locações">
+    <span class="budget-float-logo" aria-hidden="true">
+      <span class="brand-mark">MS<span>.</span></span>
+      <span class="budget-float-brand">LOCAÇÕES <small>& EVENTOS</small></span>
+    </span>
+    <span class="budget-float-label">Simule orçamento <span aria-hidden="true">↗</span></span>
+  </a>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     const toggle = document.querySelector('.menu-toggle'), menu = document.querySelector('.menu'); toggle.addEventListener('click', () => { const open = menu.classList.toggle('open'); toggle.setAttribute('aria-expanded', open); toggle.textContent = open ? '✕' : '☰' }); menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); toggle.textContent = '☰' }));
