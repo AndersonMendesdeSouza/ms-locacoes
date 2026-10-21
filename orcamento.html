@@ -97,13 +97,50 @@
   </footer>
 
   <dialog class="pdf-dialog" id="pdf-dialog" aria-labelledby="pdf-dialog-title" aria-describedby="pdf-dialog-description pdf-dialog-instructions">
-    <span class="kicker">ANTES DE CONTINUAR</span>
-    <h2 id="pdf-dialog-title">Como enviar sua solicitação</h2>
-    <p id="pdf-dialog-description">O PDF da sua solicitação será baixado e o WhatsApp abrirá com uma mensagem pronta.</p>
-    <p id="pdf-dialog-instructions">Depois de enviar a mensagem, <strong>anexe o PDF e envie para a MS Locações na mesma conversa.</strong> O documento precisa ser enviado separadamente.</p>
+    <div class="pdf-dialog-heading">
+      <span class="kicker">PASSO A PASSO</span>
+      <button class="pdf-dialog-close" id="pdf-dialog-cancel" type="button" aria-label="Fechar passo a passo">×</button>
+    </div>
+    <h2 id="pdf-dialog-title">Como enviar seu PDF</h2>
+    <p id="pdf-dialog-description">Ao continuar, o PDF será baixado e o WhatsApp abrirá com uma mensagem pronta.</p>
+    <p id="pdf-dialog-instructions">Depois de enviar a mensagem, <strong>siga estes passos para enviar o PDF à MS Locações na mesma conversa.</strong></p>
+    <p class="pdf-step-progress" id="pdf-step-progress" role="status">Passo 1 de 6</p>
+    <ol class="pdf-steps" aria-label="Como anexar o PDF no WhatsApp">
+      <li class="pdf-step">
+        <h3 tabindex="-1">Depois de enviar a mensagem</h3>
+        <p>Após enviar a mensagem para a MS Locações, <strong>toque no ícone de clipe na parte inferior da conversa</strong>, ao lado do campo de mensagem.</p>
+        <img src="assets/passoapasso/passo1.png" width="722" height="1600" alt="Conversa do WhatsApp com a mensagem enviada e o ícone de clipe na parte inferior, ao lado do campo de mensagem.">
+      </li>
+      <li class="pdf-step" hidden>
+        <h3 tabindex="-1">Toque no clipe</h3>
+        <p>A seta mostra o <strong>ícone de clipe</strong>. Toque nele para abrir as opções de anexo.</p>
+        <img src="assets/passoapasso/passo2.png" width="1080" height="286" alt="Seta verde indicando o ícone de clipe no campo de mensagem do WhatsApp.">
+      </li>
+      <li class="pdf-step" hidden>
+        <h3 tabindex="-1">Escolha Documento</h3>
+        <p>No menu que abrir, toque em <strong>Documento</strong> para anexar o arquivo PDF.</p>
+        <img src="assets/passoapasso/passo3.png" width="1080" height="618" alt="Menu de anexos do WhatsApp com uma seta verde apontando para Documento.">
+      </li>
+      <li class="pdf-step" hidden>
+        <h3 tabindex="-1">Pesquise nos arquivos</h3>
+        <p>Toque em <strong>Pesquisar documentos</strong> para localizar o PDF baixado no seu celular.</p>
+        <img src="assets/passoapasso/passo4.png" width="1080" height="1185" alt="Tela de arquivos com a opção Pesquisar documentos destacada em verde.">
+      </li>
+      <li class="pdf-step" hidden>
+        <h3 tabindex="-1">Selecione sua solicitação</h3>
+        <p>Procure na pasta <strong>Downloads</strong> ou nos arquivos recentes e selecione <strong>solicitacao-ms-locacoes.pdf</strong>.</p>
+        <img src="assets/passoapasso/passo5.png" width="1080" height="175" alt="Arquivo solicitacao-ms-locacoes.pdf na lista de documentos do celular.">
+      </li>
+      <li class="pdf-step" hidden>
+        <h3 tabindex="-1">Confira e envie o PDF</h3>
+        <p>Confira o documento e toque no <strong>botão verde de enviar</strong>. Pronto! A equipe receberá sua solicitação.</p>
+        <img src="assets/passoapasso/passo6.png" width="722" height="1600" alt="Prévia do PDF no WhatsApp com o botão verde de envio no canto inferior direito.">
+      </li>
+    </ol>
     <div class="pdf-dialog-actions">
-      <button class="btn pdf-dialog-cancel" id="pdf-dialog-cancel" type="button" autofocus>Voltar</button>
-      <button class="btn btn-primary" id="pdf-dialog-confirm" type="button">Entendi, continuar <span aria-hidden="true">↗</span></button>
+      <button class="btn pdf-step-back" id="pdf-step-back" type="button" disabled>Anterior</button>
+      <button class="btn btn-primary" id="pdf-step-next" type="button">Próximo <span aria-hidden="true">→</span></button>
+      <button class="btn btn-primary" id="pdf-dialog-confirm" type="button" hidden>Gerar PDF <span aria-hidden="true">↗</span></button>
     </div>
   </dialog>
 

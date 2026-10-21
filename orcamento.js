@@ -41,6 +41,11 @@ const whatsappFallback = document.getElementById('whatsapp-fallback');
 const pdfDialog = document.getElementById('pdf-dialog');
 const pdfDialogCancel = document.getElementById('pdf-dialog-cancel');
 const pdfDialogConfirm = document.getElementById('pdf-dialog-confirm');
+const pdfSteps = document.querySelectorAll('.pdf-step');
+const pdfStepProgress = document.getElementById('pdf-step-progress');
+const pdfStepBack = document.getElementById('pdf-step-back');
+const pdfStepNext = document.getElementById('pdf-step-next');
+let currentPdfStep = 0;
 const itemControls = [];
 
 document.getElementById('year').textContent = new Date().getFullYear();
@@ -254,11 +259,40 @@ function createRequestPdf(selectedItems) {
   return pdf;
 }
 
+function showPdfStep(index, focusTitle = false) {
+  currentPdfStep = index;
+  pdfSteps.forEach((step, stepIndex) => {
+    step.hidden = stepIndex !== currentPdfStep;
+  });
+  const isLastStep = currentPdfStep === pdfSteps.length - 1;
+  pdfStepProgress.textContent = `Passo ${currentPdfStep + 1} de ${pdfSteps.length}`;
+  pdfStepBack.disabled = currentPdfStep === 0;
+  pdfStepNext.hidden = isLastStep;
+  pdfDialogConfirm.hidden = !isLastStep;
+  pdfDialog.scrollTop = 0;
+  if (focusTitle) {
+    pdfSteps[currentPdfStep].querySelector('h3').focus();
+  }
+}
+
+pdfStepBack.addEventListener('click', () => {
+  if (currentPdfStep > 0) {
+    showPdfStep(currentPdfStep - 1, true);
+  }
+});
+
+pdfStepNext.addEventListener('click', () => {
+  if (currentPdfStep < pdfSteps.length - 1) {
+    showPdfStep(currentPdfStep + 1, true);
+  }
+});
+
 whatsappButton.addEventListener('click', () => {
   updateSummary();
   if (whatsappButton.disabled) {
     return;
   }
+  showPdfStep(0);
   pdfDialog.showModal();
 });
 
@@ -267,7 +301,7 @@ pdfDialogCancel.addEventListener('click', () => {
 });
 
 pdfDialogConfirm.addEventListener('click', () => {
-  if (!pdfDialog.open) {
+  if (!pdfDialog.open || currentPdfStep !== pdfSteps.length - 1) {
     return;
   }
   pdfDialog.close();

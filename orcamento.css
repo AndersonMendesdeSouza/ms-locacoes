@@ -484,7 +484,7 @@
 }
 
 .pdf-dialog {
-  width: min(520px, calc(100% - 36px));
+  width: min(620px, calc(100% - 36px));
   max-height: calc(100vh - 40px);
   max-height: calc(100dvh - 40px);
   overflow-y: auto;
@@ -516,22 +516,86 @@
   color: #10222d;
 }
 
-.pdf-dialog-actions {
+.pdf-dialog-heading {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.pdf-dialog-close {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #d8e3e6;
+  border-radius: 10px;
+  background: #fff;
+  color: #526570;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.pdf-dialog .pdf-step-progress {
+  margin: 20px 0 10px;
+  color: #08798e;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pdf-steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pdf-step h3 {
+  margin: 0 0 8px;
+  font-size: 21px;
+}
+
+.pdf-step p {
+  overflow-wrap: anywhere;
+  font-size: 14px;
+}
+
+.pdf-step img {
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  max-height: min(38dvh, 340px);
+  border-radius: 12px;
+  background: #f0f5f6;
+  object-fit: contain;
+}
+
+.pdf-dialog-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
   margin-top: 26px;
 }
 
 .pdf-dialog-actions button {
+  min-width: 0;
+  gap: 10px;
+  padding: 0 12px;
   border: 0;
   cursor: pointer;
 }
 
-.pdf-dialog-actions .pdf-dialog-cancel {
+.pdf-dialog-actions .pdf-step-back {
   border: 1px solid #d8e3e6;
   background: #fff;
   color: #526570;
+}
+
+.pdf-step-back:disabled {
+  opacity: .45;
+  transform: none;
+  cursor: default;
 }
 
 @media (max-width: 1100px) {
@@ -575,10 +639,6 @@
 @media (max-width: 680px) {
   .pdf-dialog {
     padding: 24px;
-  }
-
-  .pdf-dialog-actions {
-    flex-direction: column;
   }
 
   .budget-intro {
